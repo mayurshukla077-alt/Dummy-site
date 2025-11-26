@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dummy site</title>
+  <title>Dummy Website</title>
+  <style>
+    body { font-family: sans-serif; }
+    .output { margin-top: 1em; }
+  </style>
 </head>
 <body>
   <input type="text" placeholder="Enter something..." />
+  <div class="output" id="output"></div>
+  <script>
+    function getParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    const code = getParam('code');
+    const state = getParam('state');
+    let msg = '';
+    if (code) msg += 'code: ' + code + '<br>';
+    if (state) msg += 'state: ' + state;
+    document.getElementById('output').innerHTML = msg;
+  </script>
 </body>
 </html>
